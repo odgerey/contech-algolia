@@ -1,7 +1,9 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search Page</title>
+    <title>Search Interface</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css/themes/algolia.css">
 </head>
 <body>
@@ -10,16 +12,22 @@
     <div id="hits"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch"></script>
     <script>
+        // Initialize Algolia Search Client
+        const searchClient = algoliasearch('RTGNQ6F69C', 'd00c63705fb78ab7047ffe39ff3ce47b');
+
+        // Initialize InstantSearch
         const search = instantsearch({
             indexName: 'contech_h_q_pages',
-            searchClient: algoliasearch('RTGNQ6F69C', 'd00c63705fb78ab7047ffe39ff3ce47b'),
+            searchClient,
         });
 
+        // Add Search Widgets
         search.addWidgets([
             instantsearch.widgets.searchBox({
                 container: '#searchbox',
-                placeholder: 'Search...',
+                placeholder: 'Search for items...',
             }),
             instantsearch.widgets.hits({
                 container: '#hits',
@@ -34,6 +42,7 @@
             }),
         ]);
 
+        // Start the search
         search.start();
     </script>
 </body>
