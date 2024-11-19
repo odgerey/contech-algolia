@@ -19,7 +19,7 @@ function Hit({ hit }) {
   );
 }
 
-function App() {
+export default function App() {
   return (
     <InstantSearch searchClient={searchClient} indexName="contech_h_q_pages">
       <SearchBox />
@@ -27,3 +27,4 @@ function App() {
     </InstantSearch>
   );
 }
+
